@@ -1,19 +1,22 @@
 
-import exercise1
+from exercise1 import(
+    fizzBuzz
+)
+
 import unittest
 
 class TestFizzBuzz(unittest.TestCase):
 
-    def ShouldReturnAString_WhenReceiveAPositiveNumber(self):
+    def test_ShouldReturnAString_WhenReceiveAPositiveNumber(self):
         num = 10
         self.assertEqual(fizzBuzz(num),str(num))
 
-    def ShouldReturnAString_WhenReceiveANegativeNumber(self):
+    def test_ShouldReturnAString_WhenReceiveANegativeNumber(self):
         num = -10
         self.assertEqual(fizzBuzz(num),str(num))
     
-    def ShouldReturnAError_WhenNotReceiveANumber(self):
+    def test_ShouldReturnAError_WhenNotReceiveANumber(self):
         num = "a"
         with self.assertRaises(ValueError) as error:
             fizzBuzz(num)
-        self.assertEqual(str(error.exception), "no es un numero")
+        self.assertEqual(str(error.exception), "no es numero")
