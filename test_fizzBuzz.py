@@ -20,3 +20,8 @@ class TestFizzBuzz(unittest.TestCase):
         with self.assertRaises(ValueError) as error:
             fizzBuzz(num)
         self.assertEqual(str(error.exception), "no es numero")
+    
+    def test_ShouldReturnFizz_WhenIsMultipleOfThree(self):
+        self.assertEqual(fizzBuzz(3), "Fizz")
+        self.assertEqual(fizzBuzz(6), "Fizz")
+        self.assertEqual(fizzBuzz(12), "Fizz")
