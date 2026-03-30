@@ -7,12 +7,12 @@ import unittest
 
 class TestFizzBuzz(unittest.TestCase):
 
-    def test_ShouldReturnAString_WhenReceiveAPositiveNumber(self):
-        num = 10
+    def test_ShouldReturnAString_WhenReceiveAPositiveNumberThatIsNotAnMultipleOfThreeOrFiveOrBoth(self):
+        num = 1
         self.assertEqual(fizzBuzz(num),str(num))
 
-    def test_ShouldReturnAString_WhenReceiveANegativeNumber(self):
-        num = -10
+    def test_ShouldReturnAString_WhenReceiveANegativeNumberThatIsNotAnMultipleOfThreeOrFiveOrBoth(self):
+        num = -1
         self.assertEqual(fizzBuzz(num),str(num))
     
     def test_ShouldReturnAError_WhenNotReceiveANumber(self):
@@ -25,3 +25,8 @@ class TestFizzBuzz(unittest.TestCase):
         self.assertEqual(fizzBuzz(3), "Fizz")
         self.assertEqual(fizzBuzz(6), "Fizz")
         self.assertEqual(fizzBuzz(12), "Fizz")
+
+    def test_ShouldReturnBuzz_WhenIsMultipleOfFive(self):
+        self.assertEqual(fizzBuzz(5), "Buzz")
+        self.assertEqual(fizzBuzz(10), "Buzz")
+        self.assertEqual(fizzBuzz(20), "Buzz")
