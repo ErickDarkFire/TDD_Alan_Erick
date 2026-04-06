@@ -22,3 +22,12 @@ class TestPasswordValidation(unittest.TestCase):
                 "The passwordd must contain at least 2 numbers"
             ]
         })
+
+    def test_ShouldReturnAnError_WhenPasswordDoesNotContainACapitalLetter(self):
+        password = "loikjf57$"
+        self.assertEqual(passwordValidation(password), {
+            "isValid": False,
+            "errors": [
+                "password must contain at least one capital letter"
+            ]
+        })
