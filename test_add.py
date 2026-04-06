@@ -78,3 +78,7 @@ class TestAdd(unittest.TestCase):
         with self.assertRaises(ValueError) as error:
             Add(num)
         self.assertEqual(str(error.exception), "Negative number(s) not allowed: -3\n'|' expected but ',' found at position 3")
+
+    def test_ShouldReturnSumWithoutANumberBiggerWithA1000BeIgnored(self):
+        num = "2,1000"
+        self.assertEqual(Add(num),2)
