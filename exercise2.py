@@ -36,7 +36,8 @@ def Add(nums):
     for i in range(0,len(list_nums)):
         try:
             n = int(list_nums[i])
-            acum += n
+            if n < 1000 and n > 0:
+                acum += n
             if n < 0:
                 negative_numbers.append(str(n))
         except:
@@ -66,7 +67,6 @@ def Add(nums):
     
     if len(error_msg) > 0 or len(error_msg2) > 0:
         error_msg.extend(error_msg2)
-        print("\n".join(error_msg))
         raise ValueError("\n".join(error_msg))
     else:
         return acum

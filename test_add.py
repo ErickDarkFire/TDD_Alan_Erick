@@ -36,12 +36,12 @@ class TestAdd(unittest.TestCase):
     def test_ShouldReturnAnError_WhenStringHasANewLineAtTheEnd(self):        
         with self.assertRaises(ValueError) as error:
             Add("\n")
-        self.assertEqual(str(error.exception), "Invalido")
+        self.assertEqual(str(error.exception), "Invalid")
     
     def test_ShouldReturnAnError_WhenStringHasACommaAtTheEnd(self):        
         with self.assertRaises(ValueError) as error:
             Add(",")
-        self.assertEqual(str(error.exception), "Invalido")
+        self.assertEqual(str(error.exception), "Invalid")
     
     def test_ShouldReturnTheSumOfAllNumbers_WhenStringHasTheCorrectFormat(self):        
         num = "//;\n1;3"
