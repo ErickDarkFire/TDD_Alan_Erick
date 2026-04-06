@@ -29,11 +29,20 @@ def Add(nums):
     list_nums = new_nums     
     
     acum = 0 
+    negative_numbers = []
     for i in range(0,len(list_nums)):
         try:
-            acum += int(list_nums[i])
+            n = int(list_nums[i])
+            if n < 0:
+                negative_numbers.append(str(n))
+            else:
+                acum += n
         except:
             for x in list_nums[i]:
                 if x.isdigit() == False:
                     raise ValueError(f"'{''.join(sep)}' expected but '{x}' found at position {nums.find(x)}")
-    return acum
+    
+    if len(negative_numbers) > 0:
+        raise ValueError(f"Negative number(s) not allowed: {','.join(negative_numbers)}")
+    else:
+        return acum
