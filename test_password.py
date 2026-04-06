@@ -31,3 +31,13 @@ class TestPasswordValidation(unittest.TestCase):
                 "password must contain at least one capital letter"
             ]
         })
+
+    def test_ShouldReturnAnError_WhenPasswordDoesNotContainASpecialCharacter(self):
+        password = "Abcdef90"
+        self.assertEqual(passwordValidation(password), {
+            "isValid": False,
+            "errors": [
+                "password must contain at least one special character"
+            ]
+        })
+        
