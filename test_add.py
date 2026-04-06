@@ -20,3 +20,7 @@ class TestAdd(unittest.TestCase):
     def test_ShouldReturnTheSumOfBothNumbers_WhenStringIsUptoTwoNumbers(self):
         num = "1,2"
         self.assertEqual(Add(num),3)
+
+    def test_ShouldReturnTheSumOfAllNumbers_WhenStringHasManyNumbers(self):
+        num = "2,1,4,5,7"
+        self.assertEqual(Add(num),19)
