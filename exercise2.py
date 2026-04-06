@@ -1,7 +1,6 @@
 """
 Exercise2
 """
-import re
 
 def Add(nums):
     if nums == "":
@@ -9,14 +8,32 @@ def Add(nums):
     
     sep = [',','\n']
     size = len(nums)
-    if nums[size-1] in sep:
+    if size > 2 and nums.startswith("//"):
+            header, nums = nums.split("\n", 1)
+            size = len(nums)
+            sep = [header[2:]]
+
+    if any(nums.endswith(d) for d in sep):
         raise ValueError("Invalido")
     
-    list_nums = re.split(r'[,\n]+',nums)
-    if size == 1:
-        return int(list_nums[0])
-    else:
-        acum = 0 
-        for i in range(0,len(list_nums)):
+    #remplazamos todos los separadores por 1 solo
+    s = sep[0]
+    for i in range(1,len(sep)):
+        nums = nums.replace(sep[i],s)
+    list_nums = nums.split(s)  
+
+    new_nums = []
+    for x in list_nums:
+        if x.strip():
+            new_nums.append(x)
+    list_nums = new_nums     
+    
+    acum = 0 
+    for i in range(0,len(list_nums)):
+        try:
             acum += int(list_nums[i])
-        return acum
+        except:
+            for x in list_nums[i]:
+                if x.isdigit() == False:
+                    raise ValueError(f"'{''.join(sep)}' expected but '{x}' found at position {nums.find(x)}")
+    return acum
