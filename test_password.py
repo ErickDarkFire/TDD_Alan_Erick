@@ -13,3 +13,12 @@ class TestPasswordValidation(unittest.TestCase):
                 "Pasword must be at least 8 characters"
             ]
         })
+
+    def test_ShouldReturnAnError_WhenPasswordHasLessThanTwoNumbers(self):
+        password = "Qwtefg1$"
+        self.assertEqual(passwordValidation(password), {
+            "isValid": False,
+            "errors": [
+                "The passwordd must contain at least 2 numbers"
+            ]
+        })
