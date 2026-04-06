@@ -32,3 +32,13 @@ class TestAdd(unittest.TestCase):
     def test_ShouldReturnTheSumOfAllNumbers_WhenStringHasANewLineSeparatorFollowingComa(self):
         num = "2,\n3"
         self.assertEqual(Add(num),5)
+
+    def test_ShouldReturnAnError_WhenStringHasANewLineAtTheEnd(self):        
+        with self.assertRaises(ValueError) as error:
+            Add("\n")
+        self.assertEqual(str(error.exception), "Invalido")
+    
+    def test_ShouldReturnAnError_WhenStringHasACommaAtTheEnd(self):        
+        with self.assertRaises(ValueError) as error:
+            Add(",")
+        self.assertEqual(str(error.exception), "Invalido")
