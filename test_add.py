@@ -60,3 +60,15 @@ class TestAdd(unittest.TestCase):
         with self.assertRaises(ValueError) as error:
             Add(num)
         self.assertEqual(str(error.exception), "'|' expected but ',' found at position 3")
+    
+    def test_ShouldReturnAnError_WhenStringHasANegativeNumber(self):        
+        num = "1,-2"
+        with self.assertRaises(ValueError) as error:
+            Add(num)
+        self.assertEqual(str(error.exception), "Negative number(s) not allowed: -2")
+    
+    def test_ShouldReturnAnError_WhenStringHasNegativeNumbers(self):        
+        num = "2,-4,-9"
+        with self.assertRaises(ValueError) as error:
+            Add(num)
+        self.assertEqual(str(error.exception), "Negative number(s) not allowed: -4,-9")
