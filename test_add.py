@@ -72,3 +72,9 @@ class TestAdd(unittest.TestCase):
         with self.assertRaises(ValueError) as error:
             Add(num)
         self.assertEqual(str(error.exception), "Negative number(s) not allowed: -4,-9")
+    
+    def test_ShouldReturnAllErrorsSeparateByNewLines_WhenStringHasWrongFormat(self):        
+        num = "//|\n1|2,-3"
+        with self.assertRaises(ValueError) as error:
+            Add(num)
+        self.assertEqual(str(error.exception), "Negative number(s) not allowed: -3\n'|' expected but ',' found at position 3")
