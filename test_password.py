@@ -40,4 +40,22 @@ class TestPasswordValidation(unittest.TestCase):
                 "password must contain at least one special character"
             ]
         })
-        
+
+    def test_ShouldReturnValidTrueAndEmptyErrors_WhenPasswordIsCorrect(self):
+        password = "AlEt12$%"
+        self.assertEqual(passwordValidation(password), {
+            "isValid": True,
+            "errors": []
+        })
+
+    def test_ShouldReturnMultipleErrors_WhenPasswordFailsMoreThanOneValidation(self):
+        password = "abcdefg"
+        self.assertEqual(passwordValidation(password), {
+            "isValid": False,
+            "errors": [
+                "Pasword must be at least 8 characters",
+                "The passwordd must contain at least 2 numbers",
+                "password must contain at least one capital letter",
+                "password must contain at least one special character"
+            ]
+        })
