@@ -32,7 +32,7 @@ class TestAdd(unittest.TestCase):
     def test_ShouldReturnTheSumOfAllNumbers_WhenStringHasANewLineSeparatorFollowingComa(self):
         num = "2,\n3"
         self.assertEqual(Add(num),5)
-
+    
     def test_ShouldReturnAnError_WhenStringHasANewLineAtTheEnd(self):        
         with self.assertRaises(ValueError) as error:
             Add("\n")
@@ -42,3 +42,21 @@ class TestAdd(unittest.TestCase):
         with self.assertRaises(ValueError) as error:
             Add(",")
         self.assertEqual(str(error.exception), "Invalido")
+    
+    def test_ShouldReturnTheSumOfAllNumbers_WhenStringHasTheCorrectFormat(self):        
+        num = "//;\n1;3"
+        self.assertEqual(Add(num),4)
+    
+    def test_ShouldReturnTheSumOfAllNumbers_WhenStringHasTheCorrectFormat2(self):        
+        num = "//|\n1|2|3"
+        self.assertEqual(Add(num),6)
+    
+    def test_ShouldReturnTheSumOfAllNumbers_WhenStringHasTheCorrectFormat3(self):        
+        num = "//sep\n2sep5"
+        self.assertEqual(Add(num),7)
+    
+    def test_ShouldReturnAnError_WhenStringHasTheCorrectFormatButUseADifferentSeparator(self):        
+        num = "//|\n1|2,3"
+        with self.assertRaises(ValueError) as error:
+            Add(num)
+        self.assertEqual(str(error.exception), "'|' expected but ',' found at position 3")
