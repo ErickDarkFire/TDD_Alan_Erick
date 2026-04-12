@@ -4,26 +4,22 @@ from exercise4 import(
 )
 
 import pytest
-import csv
 
-@pytest.mark.parametrize("text ,expected_result", load_csv_data(1))
-def test_ShouldReturnNoResult_WhenInputIsLesThanTwo(text, expected_result):
-    assert search(text) == expected_result
-
-@pytest.mark.parametrize("text ,expected_result", load_csv_data(2))
-def test_Should(text, expected_result):
-    assert search(text) == expected_result
-
-@pytest.mark.parametrize("text ,expected_result", load_csv_data(3))
-def test_Should(text, expected_result):
-    assert search(text) == expected_result
-
-@pytest.mark.parametrize("text ,expected_result", load_csv_data(4))
-def test_Should(text, expected_result):
-    assert search(text) == expected_result
-
-@pytest.mark.parametrize("text ,expected_result", load_csv_data(5))
-def test_Should(text, expected_result):
-    assert search(text) == expected_result
+all_cases = (
+    load_csv_data('v'),
+    load_csv_data('va'),
+    load_csv_data('VA'),
+    load_csv_data('APE'),
+    load_csv_data('*'),
+    load_csv_data('vALeN')
+)
+print(all_cases)
+@pytest.mark.parametrize(
+    "text,expected_result",
+    all_cases,
+    ids=[f"case_{i}" for i in range(len(all_cases))]
+)
+def test_subtest(text,expected_result):
+    assert str(search(text)) == expected_result
 
     

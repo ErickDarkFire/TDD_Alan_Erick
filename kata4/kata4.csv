@@ -1,7 +1,7 @@
-input, expected_result
-v, no results
-va, [Valencia, Vancouver]
-VA, [Valencia, Vancouver]
-APE, [Budapest]
-*,  ["Paris", "Budapest", "Skopje", "Rotterdam", "Valencia", "Vancouver", "Amsterdam", "Vienna", "Sydney", "New York City", "London", "Bangkok", "Hong Kong", "Dubai", "Rome", "Istanbul"]
-
+input,expected_result
+v,No results
+va,"['Valencia', 'Vancouver']"
+VA,"['Valencia', 'Vancouver']"
+APE,"['Budapest']"
+*,"['Paris', 'Budapest', 'Skopje', 'Rotterdam', 'Valencia', 'Vancouver', 'Amsterdam', 'Vienna', 'Sydney', 'New York City', 'London', 'Bangkok', 'Hong Kong', 'Dubai', 'Rome', 'Istanbul']"
+vALeN,"['Valencia']"
