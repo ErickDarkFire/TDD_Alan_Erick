@@ -1,0 +1,6 @@
+input,expected_result
+'12345','$7.25'
+'23456','$12.50'
+'99999','Error: barcode not found'
+'', 'Error: empty barcode'
+'12345 23456','$19.75'
