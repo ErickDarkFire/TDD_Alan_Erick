@@ -13,7 +13,6 @@ all_cases = (
     load_csv_data('*'),
     load_csv_data('vALeN')
 )
-print(all_cases)
 @pytest.mark.parametrize(
     "text,expected_result",
     all_cases,
