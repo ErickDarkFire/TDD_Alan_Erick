@@ -5,6 +5,8 @@ Erick Eduardo Rodriguez Gomez
 Exercise5
 """
 
+from exercise5 import scan
+
 import unittest
 
 class TestScan(unittest.TestCase):
@@ -17,6 +19,6 @@ class TestScan(unittest.TestCase):
             ('12345 23456', '$19.75')
         ]
 
-        for input, expected_output in casos:
-            with self.subTest(prices=input):
-                self.assertEqual(scan(prices), expected_output)
+        for barcode, expected_output in casos:
+            with self.subTest(barcode=barcode):
+                self.assertEqual(scan(barcode), expected_output)
