@@ -4,7 +4,6 @@ Erick Eduardo Rodriguez Gomez
 
 Exercise6
 """
-
 from exercise6 import Banking
 import unittest
 from pathlib import Path
