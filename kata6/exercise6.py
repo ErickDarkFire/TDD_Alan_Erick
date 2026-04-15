@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 def load_csv_data(test_input):
-    with open('kata5.csv', 'r') as f:
+    with open('kata6.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             if row['input'] == test_input:
@@ -29,7 +29,6 @@ class Banking:
     def deposit(amount):
         ruta = Path("kata6/table.txt")
         ahora = datetime.now().strftime("%d/%m/%Y")
-        acumulado_anterior = 0.0
         saldo_anterior = 0.0
 
         if ruta.exists() and ruta.stat().st_size > 0:
@@ -38,17 +37,14 @@ class Banking:
                 if lineas:
                     ultima_linea = lineas[-1].strip()
                     datos = ultima_linea.split(',')
-                    acumulado_anterior = float(datos[1])
                     saldo_anterior = float(datos[2])
-        nuevo_acumulado = acumulado_anterior + amount
         nuevo_saldo = saldo_anterior + amount
         with open(ruta, "a") as f:
-            f.write(f"{ahora},{nuevo_acumulado:.2f},{nuevo_saldo:.2f}\n")
+            f.write(f"{ahora},{amount:.2f},{nuevo_saldo:.2f}\n")
         
     def withdraw(amount):
         ruta = Path("kata6/table.txt")
         ahora = datetime.now().strftime("%d/%m/%Y")
-        acumulado_anterior = 0.0
         saldo_anterior = 0.0
 
         if ruta.exists() and ruta.stat().st_size > 0:
@@ -57,12 +53,10 @@ class Banking:
                 if lineas:
                     ultima_linea = lineas[-1].strip()
                     datos = ultima_linea.split(',')
-                    acumulado_anterior = float(datos[1])
                     saldo_anterior = float(datos[2])
-        nuevo_acumulado = acumulado_anterior - amount
         nuevo_saldo = saldo_anterior - amount
         with open(ruta, "a") as f:
-            f.write(f"{ahora},{nuevo_acumulado:.2f},{nuevo_saldo:.2f}\n")
+            f.write(f"{ahora},{-amount:.2f},{nuevo_saldo:.2f}\n")
 
     def printStatement():
         ruta = Path("kata6/table.txt")        
@@ -78,10 +72,10 @@ class Banking:
             for linea in reversed(lineas):
                 datos = linea.strip().split(',')
                 if len(datos) == 3:
-                    fecha, acumulado, saldo = datos
-                    acum = float(acumulado)
-                    sal  = float(saldo)
-                    print(f"{fecha:<11}|{acum:>12.2f}|{sal:>12.2f}")
+                    fecha, amount, saldo = datos
+                    monto = float(amount)
+                    sal = float(saldo)
+                    print(f"{fecha:<11}|{monto:>12.2f}|{sal:>12.2f}")
 
 """
 Probando las funciones, ejemplo
